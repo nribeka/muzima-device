@@ -45,6 +45,7 @@ grails.project.dependency.resolution = {
         //mavenRepo "http://download.java.net/maven/2/"
         //mavenRepo "http://repository.jboss.com/maven2/"
         mavenRepo "http://repo.spring.io/milestone/"
+        mavenRepo "http://maven.restlet.org/"
     }
 
     dependencies {
@@ -71,9 +72,8 @@ grails.project.dependency.resolution = {
         //runtime ":cached-resources:1.1"
         //runtime ":yui-minify-resources:0.1.5"
         compile ":spring-security-core:2.0-RC2"
-        compile ":mail:1.0.1"
-        compile ":jquery-ui:1.10.3"
-        compile ":famfamfam:1.0.1"
-        compile ":spring-security-ui:1.0-RC1"
+        compile ":spring-security-acl:2.0-RC1"
+        compile ":jaxrs:0.10"
+
     }
 }

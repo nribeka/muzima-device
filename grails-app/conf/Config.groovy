@@ -113,39 +113,3 @@ log4j = {
            'org.hibernate',
            'net.sf.ehcache.hibernate'
 }
-
-
-// Added by the Spring Security Core plugin:
-grails.plugin.springsecurity.userLookup.userDomainClassName = 'com.muzima.WebUser'
-grails.plugin.springsecurity.userLookup.authorityJoinClassName = 'com.muzima.WebUserAuthority'
-grails.plugin.springsecurity.authority.className = 'com.muzima.Authority'
-grails.plugin.springsecurity.requestMap.className = 'com.muzima.Requestmap'
-grails.plugin.springsecurity.securityConfigType = 'InterceptUrlMap'
-
-grails.plugin.springsecurity.rejectIfNoRule = false
-grails.plugin.springsecurity.fii.rejectPublicInvocations = true
-
-grails.plugin.springsecurity.interceptUrlMap = [
-        '/':                  ['permitAll'],
-        '/index':             ['permitAll'],
-        '/index.gsp':         ['permitAll'],
-        '/**/js/**':          ['permitAll'],
-        '/**/css/**':         ['permitAll'],
-        '/**/images/**':      ['permitAll'],
-        '/**/favicon.ico':    ['permitAll'],
-        '/login/**':          ['permitAll'],
-        '/logout/**':         ['permitAll'],
-        '/dbdoc/**':                ['ROLE_DEVELOPER'],
-        '/aclclass/**':             ['ROLE_DEVELOPER'],
-        '/aclentry/**':             ['ROLE_DEVELOPER'],
-        '/aclobjectidentity/**':    ['ROLE_DEVELOPER'],
-        '/aclsid/**':               ['ROLE_DEVELOPER'],
-        '/persistentlogin/**':      ['ROLE_DEVELOPER'],
-        '/register/**':             ['ROLE_DEVELOPER'],
-        '/registrationcode/**':     ['ROLE_DEVELOPER'],
-        '/requestmap/**':           ['ROLE_DEVELOPER'],
-        '/role/**':                 ['ROLE_DEVELOPER'],
-        '/securityinfo/**':         ['ROLE_DEVELOPER'],
-        '/user/**':                 ['ROLE_DEVELOPER']
-]
-
