@@ -1,4 +1,4 @@
-package com.muzima
+package com.muzima.v1
 
 import grails.test.mixin.TestFor
 import spock.lang.Specification
