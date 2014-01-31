@@ -34,7 +34,7 @@ class PersonAddress {
     Date dateVoided
     String voidReason
 
-//    static belongsTo = [person: Person]
+    static belongsTo = [person: Person]
 
     static constraints = {
         address1 nullable: false, blank: false
