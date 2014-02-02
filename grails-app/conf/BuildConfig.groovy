@@ -73,6 +73,6 @@ grails.project.dependency.resolution = {
         //runtime ":yui-minify-resources:0.1.5"
         compile ":spring-security-core:2.0-RC2"
         compile ":spring-security-acl:2.0-RC1"
-
+        compile ":cors:1.1.4"
     }
 }
