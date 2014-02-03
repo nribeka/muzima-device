@@ -1,7 +1,9 @@
 package com.muzima
 
+import grails.rest.Resource
 import org.apache.commons.lang.builder.HashCodeBuilder
 
+@Resource(formats = ['json', 'xml'])
 class AppUserAuthority implements Serializable {
 
 	private static final long serialVersionUID = 1

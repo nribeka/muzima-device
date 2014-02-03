@@ -1,10 +1,11 @@
 import com.muzima.AppUser
 import com.muzima.AppUserAuthority
 import com.muzima.Authority
+import com.muzima.Requestmap
 import com.muzima.v1.Person
 import com.muzima.v1.PersonAddress
 import com.muzima.v1.PersonName
-import com.muzima.Requestmap
+import grails.converters.JSON
 
 class BootStrap {
 
@@ -13,7 +14,7 @@ class BootStrap {
         def adminAuthority = new Authority(authority: 'ROLE_ADMIN')
         adminAuthority.save(flush: true, failOnError: true)
 
-        def adminUser = new AppUser(username: 'me', password: 'password')
+        def adminUser = new AppUser(username: 'root', password: 'password')
         adminUser.save(flush: true, failOnError: true)
 
         def adminAppUserAuthority = AppUserAuthority.create(adminUser, adminAuthority, true)
@@ -33,8 +34,8 @@ class BootStrap {
         def firstPerson = new Person(
                 gender: "M", birthdate: new Date().parse("dd/MM/yyyy", firstDate),
                 creator: adminUser, dateCreated: new Date())
-        firstPerson.addToPersonName(firstPersonName)
-        firstPerson.addToPersonAddress(firstPersonAddress)
+        firstPerson.addToPersonNames(firstPersonName)
+        firstPerson.addToPersonAddresses(firstPersonAddress)
         firstPerson.save(flush: true, failOnError: true)
 
         def secondDate = "29/10/2010"
@@ -47,8 +48,8 @@ class BootStrap {
         def secondPerson = new Person(
                 gender: "F", birthdate: new Date().parse("dd/MM/yyyy", secondDate),
                 creator: adminUser, dateCreated: new Date())
-        secondPerson.addToPersonName(secondPersonName)
-        secondPerson.addToPersonAddress(secondPersonAddress)
+        secondPerson.addToPersonNames(secondPersonName)
+        secondPerson.addToPersonAddresses(secondPersonAddress)
         secondPerson.save(flush: true, failOnError: true)
 
         assert Person.count == 2
@@ -56,6 +57,14 @@ class BootStrap {
         new Requestmap(url: '/person/**', configAttribute: 'ROLE_ADMIN').save()
         new Requestmap(url: '/login/**', configAttribute: 'permitAll').save()
         new Requestmap(url: '/logout/**', configAttribute: 'permitAll').save()
+
+        JSON.registerObjectMarshaller(AppUser) {
+            def map = [:]
+            map['id'] = it.id
+            map['username'] = it.username
+            map['authorities'] = it.getAuthorities()
+            map['person'] = ['givenName': it.getGivenName(), 'middleName': it.getMiddleName(), 'familyName': it.getFamilyName()]
+        }
     }
     def destroy = {
     }

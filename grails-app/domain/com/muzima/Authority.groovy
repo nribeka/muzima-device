@@ -1,5 +1,8 @@
 package com.muzima
 
+import grails.rest.Resource
+
+@Resource(formats = ['json', 'xml'])
 class Authority {
 
 	String authority

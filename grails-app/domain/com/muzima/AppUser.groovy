@@ -1,9 +1,14 @@
 package com.muzima
 
+import com.muzima.v1.Person
+import grails.rest.Resource
+
+@Resource(formats = ['json', 'xml'])
 class AppUser {
 
 	transient springSecurityService
 
+    Person person
 	String username
 	String password
 	boolean enabled = true
@@ -14,6 +19,11 @@ class AppUser {
 	static transients = ['springSecurityService']
 
 	static constraints = {
+        person nullable: true, validator: { value, object ->
+            if (!object.username.equalsIgnoreCase("root") && object.person == null) {
+                return false;
+            }
+        }
 		username blank: false, unique: true
 		password blank: false
 	}
@@ -21,6 +31,30 @@ class AppUser {
 	static mapping = {
 		password column: '`password`'
 	}
+
+    String getGivenName() {
+        if (!person) {
+            println 'getting given name for someone who is not null'
+            person.getGivenName()
+        }
+        'null given name';
+    }
+
+    String getMiddleName() {
+        if (!person) {
+            println 'getting middle name for someone who is not null'
+            person.getMiddleName()
+        }
+        'null middle name';
+    }
+
+    String getFamilyName() {
+        if (!person) {
+            println 'getting family name for someone who is not null'
+            person.getFamilyName()
+        }
+        'null family name';
+    }
 
 	Set<Authority> getAuthorities() {
 		AppUserAuthority.findAllByAppUser(this).collect { it.authority } as Set

@@ -133,3 +133,5 @@ grails.plugin.springsecurity.controllerAnnotations.staticRules = [
 
 grails.plugin.springsecurity.useBasicAuth = true
 grails.plugin.springsecurity.basic.realmName = "HTTP Basic Auth Demo"
+
+grails.converters.json.default.deep = true

@@ -3,7 +3,7 @@ package com.muzima.v1
 import com.muzima.AppUser
 import grails.rest.Resource
 
-@Resource
+@Resource(formats = ['json', 'xml'])
 class PersonName {
     boolean preferred = false
 
