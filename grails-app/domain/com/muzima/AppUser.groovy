@@ -16,6 +16,8 @@ class AppUser {
 	boolean accountLocked
 	boolean passwordExpired
 
+
+
 	static transients = ['springSecurityService']
 
 	static constraints = {
@@ -37,7 +39,7 @@ class AppUser {
             println 'getting given name for someone who is not null'
             person.getGivenName()
         }
-        'null given name';
+        null
     }
 
     String getMiddleName() {
@@ -45,7 +47,7 @@ class AppUser {
             println 'getting middle name for someone who is not null'
             person.getMiddleName()
         }
-        'null middle name';
+        null
     }
 
     String getFamilyName() {
@@ -53,7 +55,7 @@ class AppUser {
             println 'getting family name for someone who is not null'
             person.getFamilyName()
         }
-        'null family name';
+        null
     }
 
 	Set<Authority> getAuthorities() {

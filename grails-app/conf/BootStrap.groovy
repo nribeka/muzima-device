@@ -64,6 +64,7 @@ class BootStrap {
             map['username'] = it.username
             map['authorities'] = it.getAuthorities()
             map['person'] = ['givenName': it.getGivenName(), 'middleName': it.getMiddleName(), 'familyName': it.getFamilyName()]
+            map
         }
     }
     def destroy = {
